@@ -1,0 +1,36 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "buildCloudToDeviceSender",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/tools/Samples.CloudToDeviceSender/Samples.CloudToDeviceSender.csproj"
+            ],
+            "problemMatcher": "$tsc"
+        },
+        {
+            "label": "publishCloudToDeviceSender",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/tools/Samples.CloudToDeviceSender/Samples.CloudToDeviceSender.csproj"
+            ],
+            "problemMatcher": "$tsc"
+        },
+        {
+            "label": "watchCloudToDeviceSender",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "${workspaceFolder}/tools/Samples.CloudToDeviceSender/Samples.CloudToDeviceSender.csproj"
+            ],
+            "problemMatcher": "$tsc"
+        }
+    ]
+}

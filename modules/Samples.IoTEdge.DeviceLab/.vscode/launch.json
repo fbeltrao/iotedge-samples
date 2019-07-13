@@ -1,0 +1,36 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET Core Launch (console)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/bin/Debug/netcoreapp2.1/Samples.IoTEdge.DeviceLab.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "internalConsole",
+            "env": {
+                "DeviceSharedAccessKey": "HDhCxSY7it7gMPL7viFKBmd1VTfrpf01J8z2z0pZpOM=",
+                "IOTEDGE_IOTHUBHOSTNAME": "fbrlora.azure-devices.net",
+                "DeviceList": "labdevice01,labdevice02",
+                "Protocol": "amqp",
+                "DeviceLoopDelay": "20000",
+                "CheckPendingCloudToDeviceMessage": "false",
+                "SendEvent": "false"
+            }
+        },
+        {
+            "name": "Docker: Launch .NET Core (Preview)",
+            "type": "docker-coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "dockerBuild": {},
+            "dockerRun": {}
+        }
+    ]
+}
