@@ -21,6 +21,13 @@ namespace Samples.IoTEdge.DeviceLab
             this.receiveAsyncLock = new SemaphoreSlim(1, 1);
         }
 
+        public uint OperationTimeoutInMilliseconds
+        { 
+            get => deviceClient.OperationTimeoutInMilliseconds;
+            set => deviceClient.OperationTimeoutInMilliseconds = value;
+        }
+
+        public void SetRetryPolicy(IRetryPolicy retryPolicy) => deviceClient.SetRetryPolicy(retryPolicy);
         public Task CompleteAsync(Message c2dMsg) => this.deviceClient.CompleteAsync(c2dMsg);
         public Task AbandonAsync(Message c2dMsg) => this.deviceClient.AbandonAsync(c2dMsg);
 

@@ -76,9 +76,20 @@ namespace Samples.IoTEdge.DeviceLab
             {                               
                 deviceClient = CreateDeviceClient();
                 deviceClient.SetConnectionStatusChangesHandler(OnConnectionStatusChanged);
+                deviceClient.OperationTimeoutInMilliseconds = deviceRunnerConfiguration.DeviceOperationTimeoutInMilliseconds;
+
+                if (deviceRunnerConfiguration.DeviceRetryPolicy)
+                {
+                    deviceClient.SetRetryPolicy(new ExponentialBackoff(10, TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(10), TimeSpan.FromMilliseconds(500)));
+                }
+                else
+                {
+                    deviceClient.SetRetryPolicy(new NoRetry());
+                }
+
                 await deviceClient.OpenAsync();
                 stopwatch.Stop();
-                Logger.Log($"{deviceId}: deviceClient created: {stopwatch.ElapsedMilliseconds}ms.");
+                Logger.Log($"{deviceId}: deviceClient created: {stopwatch.ElapsedMilliseconds}ms (retryPolicy={deviceRunnerConfiguration.DeviceRetryPolicy}, operationTimeoutInMilliseconds={deviceClient.OperationTimeoutInMilliseconds})");
             
             }
             catch (Exception ex)

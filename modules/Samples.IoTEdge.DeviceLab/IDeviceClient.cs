@@ -8,11 +8,13 @@ namespace Samples.IoTEdge.DeviceLab
     public interface IDeviceClient
     {
         Task OpenAsync();
+        uint OperationTimeoutInMilliseconds { get; set; }
         Task UpdateReportedPropertiesAsync(TwinCollection reportedProperties);
         Task<Message> ReceiveAsync(TimeSpan timeSpan);
         Task CompleteAsync(Message c2dMsg);        
         Task SendEventAsync(Message message);
         Task AbandonAsync(Message result);
         void SetConnectionStatusChangesHandler(ConnectionStatusChangesHandler statusChangesHandler);
+        void SetRetryPolicy(IRetryPolicy retryPolicy);
     }
 }

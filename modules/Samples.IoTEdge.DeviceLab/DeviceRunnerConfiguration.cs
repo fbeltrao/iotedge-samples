@@ -1,3 +1,5 @@
+using Microsoft.Azure.Devices.Client;
+
 namespace Samples.IoTEdge.DeviceLab
 {
     public class DeviceRunnerConfiguration
@@ -17,5 +19,8 @@ namespace Samples.IoTEdge.DeviceLab
         public bool EdgeGateway { get; set; } = true;
         public string DeviceSharedAccessKey { get; set; }
         public int DelayAfterIotHubCommunicationError { get; set; } = 5_000;
+
+        public uint DeviceOperationTimeoutInMilliseconds { get; set; } = DeviceClient.DefaultOperationTimeoutInMilliseconds;
+        public bool DeviceRetryPolicy { get; set; } = true;
     }
 }

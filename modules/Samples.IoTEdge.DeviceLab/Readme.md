@@ -26,3 +26,5 @@ Set the following environment variables:
 |DeviceSharedAccessKey|Devices shared access key|""
 |EdgeGateway|Indicates if the connection should done through and IoT Edge device|true
 |DelayAfterIotHubCommunicationError|Delay in ms once a iot hub communication exception is caught|5000
+|DeviceOperationTimeoutInMilliseconds|Device operation timeout in milliseconds|240000
+|DeviceRetryPolicy|Enable/disable retry policy in device client|true

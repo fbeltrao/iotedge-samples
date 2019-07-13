@@ -14,6 +14,12 @@ namespace Samples.IoTEdge.DeviceLab
             this.deviceClient = deviceClient ?? throw new System.ArgumentNullException(nameof(deviceClient));
         }
 
+        public uint OperationTimeoutInMilliseconds
+        { 
+            get => deviceClient.OperationTimeoutInMilliseconds;
+            set => deviceClient.OperationTimeoutInMilliseconds = value;
+        }
+
         public Task CompleteAsync(Message c2dMsg) => deviceClient.CompleteAsync(c2dMsg);
 
         public Task OpenAsync() => deviceClient.OpenAsync();
@@ -26,7 +32,8 @@ namespace Samples.IoTEdge.DeviceLab
 
         public Task AbandonAsync(Message message) => deviceClient.AbandonAsync(message);
 
-
         public void SetConnectionStatusChangesHandler(ConnectionStatusChangesHandler statusChangesHandler) => deviceClient.SetConnectionStatusChangesHandler(statusChangesHandler);
+
+        public void SetRetryPolicy(IRetryPolicy retryPolicy) => deviceClient.SetRetryPolicy(retryPolicy);
     }
 }
